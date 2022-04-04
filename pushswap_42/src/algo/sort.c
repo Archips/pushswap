@@ -21,6 +21,26 @@ static int	ft_check_order(t_lst *stack)
 	return (0);
 }
 
+int	ft_issort(t_lst *stack)
+{
+	t_lst *temp_1;
+	t_lst *temp_2;
+
+	temp_1 = stack;
+	while (temp_1)
+	{
+		temp_2 = temp_1->next;
+		while (temp_2)
+		{
+			if (temp_1->content > temp_2->content)
+				return (0);
+			temp_2 = temp_2->next;
+		}
+		temp_1 = temp_1->next;
+	}
+	return (1);
+}
+
 /*
  ** 1. check si on a encore 2 elem dans la stack a / sinon fait le pre-sort
  ** 2. check si les deux elements en tete de A et de B sont ordonnés / sinon double_swap
@@ -50,12 +70,12 @@ void	ft_sort(t_data *data)
 	}
 	if (ft_listmin(data->stack_a)->id > ft_set_ids(data->stack_a) / 2)
 	{
-		while (data->stack_a->content != ft_listmin(data->stack_a)->content)
+		while (data->stack_a->content != ft_listmin(data->stack_a)->content && !ft_issort(data->stack_a))
 			ft_reverse_rotate(&data->stack_a, 'a');
 	}
-	else if (ft_listmin(data->stack_a)->id <= ft_set_ids(data->stack_a) / 2)
+	else if (ft_listmin(data->stack_a)->id <= ft_set_ids(data->stack_a) / 2) 
 	{
-		while (data->stack_a->content != ft_listmin(data->stack_a)->content)
+		while (data->stack_a->content != ft_listmin(data->stack_a)->content && !ft_issort(data->stack_a))
 			ft_rotate(&data->stack_a, 'a');
 	}
 }

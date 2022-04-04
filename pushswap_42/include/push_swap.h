@@ -137,6 +137,7 @@ int		ft_set_ids(t_lst *stack);
 
 /* static void	ft_update_nodes(t_data *data); */
 /* static int	ft_check_order(t_lst stack) */
+int		ft_issort(t_lst *stack);
 void	ft_sort(t_data *data);
 
 /*

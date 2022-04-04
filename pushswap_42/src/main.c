@@ -29,7 +29,8 @@ int	main(int ac, char **av)
 			return (ft_putstr_fd("Error\n", 2), 1);
 
 		ft_init_stacks(&data);
-		ft_sort(&data);
+		if (!ft_issort(data.stack_a))
+			ft_sort(&data);
 
 		ft_listclear(&data.stack_a, free);
 		ft_listclear(&data.stack_b, free);

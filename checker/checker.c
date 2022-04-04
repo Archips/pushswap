@@ -6,14 +6,11 @@
 /*   By: athirion <athirion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 16:46:40 by athirion          #+#    #+#             */
-/*   Updated: 2022/04/03 17:21:40 by athirion         ###   ########.fr       */
+/*   Updated: 2022/04/04 13:29:48 by athirion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#include "checker.h"
 
 int	ft_operation_index(char *op)
 {
@@ -41,13 +38,14 @@ int	ft_operation_index(char *op)
 
 void	ft_exit(int success, t_lst *stack_a, t_lst *stack_b)
 {
-	ft_free_list(stack_a, stack_b);
+	ft_listclear(&stack_a, free);
+	ft_listclear(&stack_b, free);
 	if (success)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
 }
 
-void	ft_ope_tab(int (*ope[11](void *)))
+void	ft_ope_tab(void (*ope[11](void *)))
 {
 	ope[0] = (void *)ft_sa;
 	ope[1] = (void *)ft_sb;
@@ -62,26 +60,66 @@ void	ft_ope_tab(int (*ope[11](void *)))
 	ope[10] = (void *)ft_rrr;
 }
 
+int	ft_stack_len(t_lst *stack)
+{
+	t_lst	*temp;
+	int		len;
+
+	temp = stack;
+	len = 0;
+	while (temp && temp->next)
+	{
+		len ++;
+		temp = temp->next;
+	}
+	return (len);
+}
+
+int	ft_issort(t_lst *stack)
+{
+	t_lst *temp_1;
+	t_lst *temp_2;
+
+	temp_1 = stack;
+	while (temp_1)
+	{
+		temp_2 = temp_1->next;
+		while (temp_2)
+		{
+			if (temp_1->content > temp_2->content)
+				return (0);
+			temp_2 = temp_2->next;
+		}
+		temp_1 = temp_1->next;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
+	void	(*ope[11])(void *);
 	char	*operation;
 
-	while (ft_stack_len(stack_b))
-	{
-		operation = get_next_line(0);
-		if (!operation)
+	if (av >1)
+	{ 
+		while (ft_stack_len(stack_b))
 		{
-			ft_putstr_fd("Error\n", 2);
-			exit(EXIT_FAILURE);
+			operation = get_next_line(0);
+			if (!operation)
+			{
+				ft_putstr_fd("Error\n", 2);
+				exit(EXIT_FAILURE);
+			}
+			*ope[ft_operation_index(operation)](*stack_a, *stack_b);
+			free(operation);
 		}
-		*ope[ft_operation_index(operation)](*stack_a, *stack_b);
-		free(operation);
+		if (ft_issort(stack_a))
+		{
+			ft_putstr_fd("OK\n", 1);
+			ft_exit(1, stack_a, stack_b);
+		}
+		ft_putstr_fd("KO\n", 1);
+		ft_exit(0, stack_a, stack_b);
 	}
-	if (ft_is_sorted(stack_a))
-	{
-		ft_putstr_fd("OK\n", 1);
-		ft_exit(1, stack_a, stack_b);
-	}
-	ft_putstr_fd("KO\n", 1);
-	ft_exit(0, stack_a, stack_b);
+	exit(EXIT_SUCCESS);
 }
