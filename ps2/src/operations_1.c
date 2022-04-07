@@ -111,4 +111,6 @@ void	ft_print_op(t_op *op)
 		else
 			temp = (ft_printf("%s\n", temp->operation), temp->next);
 	}
+	if (temp)
+		ft_printf("%s\n", temp->operation);
 }

@@ -96,7 +96,6 @@ static void	ft_smallsort_2(t_data *data)
 	}
 }
 
-
 void	ft_smallsort(t_data *data)
 {
 	if (ft_set_ids(data->stack_a) == 3)
