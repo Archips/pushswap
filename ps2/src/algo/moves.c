@@ -63,9 +63,9 @@ static void	ft_move_stack_a(t_data *data)
 
 	size_a = ft_set_ids(data->stack_a);
 	if (ft_cheapest_senpai_id(data->stack_a, data->stack_b) > size_a / 2)
-		ft_reverse_rotate(&data->stack_a, "rra", data->buf);
+		ft_reverse_rotate(&data->stack_a, "rra", data->oplist);
 	else if (ft_cheapest_senpai_id(data->stack_a, data->stack_b) <= size_a / 2)
-		ft_rotate(&data->stack_a, "ra", data->buf);
+		ft_rotate(&data->stack_a, "ra", data->oplist);
 }
 
 /*
@@ -97,9 +97,9 @@ void	ft_move_cheap(t_data *data)
 		if (data->stack_b->content != content)
 		{
 			if (id > ft_set_ids(data->stack_b) / 2)
-				ft_reverse_rotate(&data->stack_b, "rrb", data->buf);
+				ft_reverse_rotate(&data->stack_b, "rrb", data->oplist);
 			else if (id <= ft_set_ids(data->stack_b) / 2)
-				ft_rotate(&data->stack_b, "rb", data->buf);
+				ft_rotate(&data->stack_b, "rb", data->oplist);
 		}
 		if (data->stack_a->content != senpai)
 			ft_move_stack_a(data);
@@ -107,5 +107,5 @@ void	ft_move_cheap(t_data *data)
 			&& data->stack_a->content == senpai)
 			break ;
 	}
-	ft_push(&data->stack_a, &data->stack_b, "pa", data->buf);
+	ft_push(&data->stack_a, &data->stack_b, "pa", data->oplist);
 }

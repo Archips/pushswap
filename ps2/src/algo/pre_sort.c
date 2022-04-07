@@ -80,9 +80,9 @@ void	ft_pre_sort(t_data *data)
 	while (i < (int) data->tab_size)
 	{
 		if (data->stack_a->content < median)
-			ft_push(&data->stack_b, &data->stack_a, "pb", data->buf);
+			ft_push(&data->stack_b, &data->stack_a, "pb", data->oplist);
 		else
-			ft_rotate(&data->stack_a, "ra", data->buf);
+			ft_rotate(&data->stack_a, "ra", data->oplist);
 		i ++;
 	}
 	data->tab_size = (size_t)ft_listsize(data->stack_a);

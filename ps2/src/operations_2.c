@@ -4,7 +4,7 @@
  ** ra, rb
  */
 
-void	ft_rotate(t_lst **stack, char *r, t_buf *buf)
+void	ft_rotate(t_lst **stack, char *r, t_op *op)
 {
 	t_lst	*newhead;
 	t_lst	*temp;
@@ -17,26 +17,26 @@ void	ft_rotate(t_lst **stack, char *r, t_buf *buf)
 	temp->next = NULL;
 	*stack = newhead;
 	if (r && PRINT)
-		ft_add_op(r, &buf);
+		ft_add_op(r, &op);
 }
 
 /*
  ** rr
  */
 
-void	ft_rr(t_lst **stack_a, t_lst **stack_b, t_buf *buf)
+void	ft_rr(t_lst **stack_a, t_lst **stack_b, t_op *op)
 {
-	ft_rotate (stack_a, NULL, buf);
-	ft_rotate (stack_b, NULL, buf);
+	ft_rotate (stack_a, NULL, op);
+	ft_rotate (stack_b, NULL, op);
 	if (PRINT)
-		ft_add_op("rr", &buf);
+		ft_add_op("rr", &op);
 }
 
 /*
  ** rra, rrb
  */
 
-void	ft_reverse_rotate(t_lst **stack, char *rr, t_buf *buf)
+void	ft_reverse_rotate(t_lst **stack, char *rr, t_op *op)
 {
 	t_lst	*newhead;
 	t_lst	*temp;
@@ -49,17 +49,17 @@ void	ft_reverse_rotate(t_lst **stack, char *rr, t_buf *buf)
 	newhead->next = temp;
 	*stack = newhead;
 	if (rr && PRINT)
-		ft_add_op(rr, &buf); 
+		ft_add_op(rr, &op);
 }
 
 /*
  ** rrr
  */
 
-void	ft_rrr(t_lst **stack_a, t_lst **stack_b, t_buf *buf)
+void	ft_rrr(t_lst **stack_a, t_lst **stack_b, t_op *op)
 {
-	ft_reverse_rotate (stack_a, NULL, buf);
-	ft_reverse_rotate (stack_b, NULL, buf);
+	ft_reverse_rotate (stack_a, NULL, op);
+	ft_reverse_rotate (stack_b, NULL, op);
 	if (PRINT)
-		ft_add_op("rrr", &buf); 
+		ft_add_op("rrr", &op);
 }

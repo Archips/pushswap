@@ -6,7 +6,7 @@
 #    By: cvidon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 15:04:55 by cvidon            #+#    #+#              #
-#    Updated: 2022/04/05 22:50:03 by athirion         ###   ########.fr        #
+#    Updated: 2022/04/06 16:37:03 by cvidon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,17 +35,18 @@ SRCS		= main.c				\
 			  check_args.c			\
 			  operations_1.c		\
 			  operations_2.c		\
-			  print.c		\
 			  algo/pre_sort.c		\
 			  algo/senpai.c			\
 			  algo/costs.c			\
 			  algo/id.c				\
 			  algo/moves.c			\
 			  algo/sort.c			\
+			  algo/smallsort.c		\
 			  security.c			\
 			  listutils_1.c			\
 			  listutils_2.c			\
-			  listutils_3.c
+			  listutils_3.c			\
+			  char_listutils.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
 OBJ_DIR 	= obj

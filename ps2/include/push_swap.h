@@ -44,11 +44,11 @@ typedef struct s_lst
 	int				cost;
 }	t_lst;
 
-typedef struct s_buf
+typedef struct s_op
 {
-	struct s_buf	*next;
-	char			*op;
-}	t_buf;
+	struct s_op		*next;
+	char			*operation;
+}	t_op;
 
 typedef struct s_data
 {
@@ -56,7 +56,7 @@ typedef struct s_data
 	size_t		tab_size;
 	t_lst		*stack_a;
 	t_lst		*stack_b;
-	t_buf		*buf;
+	t_op		*oplist;
 	int			size_a;
 	int			size_b;
 }	t_data;
@@ -68,12 +68,6 @@ typedef struct s_data
  */
 
 /*
- ** [ PRINT.C ]
- */
-
-void    ft_add_op(char *operation, t_buf **list);
-
-/*
  ** [ SECURITY.C ]
  */
 
@@ -81,6 +75,15 @@ void	ft_free(void *ptr);
 void	ft_free_tab(void **tab);
 void	ft_exit(char *msg);
 void	ft_error(char **strtab, int *numtab);
+
+/*
+ ** [ CHAR_LISTUTILS.C ]
+ */
+
+ void	ft_char_listdelone(t_op *oplist, void (*del)(void *));
+ void	ft_char_listdelfirst(t_op **oplist, void (*del)(void *));
+ t_op	*ft_char_listnew(char *operation);
+ void	ft_char_listclear(t_op **oplist, void (*del)(void *));
 
 /*
  ** [ LISTUTILS_3.C ]
@@ -114,18 +117,20 @@ int		ft_listsize(t_lst *lst);
  ** [ OPERATIONS_2.C ]
  */
 
-void	ft_rotate(t_lst **stack, char *r, t_buf *buf);
-void	ft_rr(t_lst **stack_a, t_lst **stack_b, t_buf *buf);
-void	ft_reverse_rotate(t_lst **stack, char *rr, t_buf *buf);
-void	ft_rrr(t_lst **stack_a, t_lst **stack_b, t_buf *buf);
+void	ft_rotate(t_lst **stack, char *r, t_op *oplist);
+void	ft_rr(t_lst **stack_a, t_lst **stack_b, t_op *oplist);
+void	ft_reverse_rotate(t_lst **stack, char *rr, t_op *oplist);
+void	ft_rrr(t_lst **stack_a, t_lst **stack_b, t_op *oplist);
 
 /*
  ** [ OPERATIONS_1.C ]
  */
 
-void	ft_swap(t_lst *stack, char *s, t_buf *buf);
-void	ft_ss(t_lst *stack_a, t_lst *stack_b, t_buf *buf);
-void	ft_push(t_lst **stack_bot, t_lst **stack_top, char *p, t_buf *buf);
+void	ft_swap(t_lst *stack, char *s, t_op *oplist);
+void	ft_ss(t_lst *stack_a, t_lst *stack_b, t_op *oplist);
+void	ft_push(t_lst **stack_bot, t_lst **stack_top, char *p, t_op *oplist);
+void	ft_add_op(char *str, t_op **oplist);
+void	ft_print_op(t_op *oplist);
 
 /*
  ** [ COSTS.C ]
@@ -148,6 +153,16 @@ void	ft_set_senpais(t_data *data);
  */
 
 int		ft_set_ids(t_lst *stack);
+
+/*
+ ** [ SMALLSORT.C ]
+ */
+
+/* static int  ft_id_smallest(t_lst *stack) */
+/* static void    ft_smallmove(t_data *data) */
+/* static void    ft_smallsort_2(t_data *data) */
+/* static void  ft_smallsort_1(t_data *data) */
+void    ft_smallsort(t_data *data);
 
 /*
  ** [ SORT.C ]
