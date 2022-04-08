@@ -39,3 +39,27 @@ t_lst	*ft_listmax(t_lst *lst)
 	}
 	return (max);
 }
+
+/*
+ ** Check that a numerical list is sorted
+ */
+
+int	ft_listissort(t_lst *lst)
+{
+	t_lst	*temp_1;
+	t_lst	*temp_2;
+
+	temp_1 = lst;
+	while (temp_1)
+	{
+		temp_2 = temp_1->next;
+		while (temp_2)
+		{
+			if (temp_1->content > temp_2->content)
+				return (0);
+			temp_2 = temp_2->next;
+		}
+		temp_1 = temp_1->next;
+	}
+	return (1);
+}

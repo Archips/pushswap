@@ -1,24 +1,23 @@
 #include "checker.h"
 
-/* void	ft_listprint_int(t_lst *lst) */
-/* { */
-/* 	t_lst	*temp; */
+void	ft_listprint_int(t_lst *lst)
+{
+	t_lst	*temp;
 
-/* 	temp = lst; */
-/* 	printf("(front)"); */
-/* 	while (temp) */
-/* 	{ */
-/* 		printf(" [cn=%i,id=%i,sp=%i,cs=%i] ->\n", */
-/* 				temp->content, */
-/* 				temp->id, */
-/* 				temp->senpai, */
-/* 				temp->cost */
-/* 				); */
-/* 		temp = temp->next; */
-/* 	} */
-/* 	printf(" NULL (back)\n"); */
-/* 	printf("\n"); */
-/* } */
+	temp = lst;
+	while (temp)
+	{
+		ft_printf(" [ cn %i, id %i, sp %i, cs %i ] ->\n",
+			temp->content,
+			temp->id,
+			temp->senpai,
+			temp->cost
+			);
+		temp = temp->next;
+	}
+	ft_printf(" NULL (back)\n");
+	ft_printf("\n");
+}
 
 void	ft_listdelfirst(t_lst **lst, void (*del)(void *))
 {
@@ -78,4 +77,3 @@ void	ft_listadd_front(t_lst **alst, t_lst *new)
 	new->next = *alst;
 	*alst = new;
 }
-

@@ -6,7 +6,7 @@
 /*   By: athirion <athirion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 10:33:50 by athirion          #+#    #+#             */
-/*   Updated: 2022/04/04 10:49:22 by athirion         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:46:09 by athirion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,45 @@ typedef struct s_lst
 {
 	struct s_lst	*next;
 	int				content;
+	int				senpai;
+	int				id;
+	int				cost;
 }	t_lst;
+
+typedef struct s_data
+{
+	int			*tab;
+	size_t		tab_size;
+	t_lst		*stack_a;
+	t_lst		*stack_b;
+	int			size_a;
+	int			size_b;
+}	t_data;
+
+/*
+ ** [ SECURITY.c ]
+ */
+
+void	ft_free(void *ptr);
+void	ft_free_tab(void **tab);
+void	ft_exit(char *msg);
+void	ft_error(char **strtab, int *numtab);
+
+/*
+ ** [ CHECK_ARGS.C ]
+ */
+
+int		ft_duplicate(int *tab, int id, long int num);
+int		ft_isnum(char *str);
+int		ft_have_num(char *str);
+
+/*
+ ** [ PARSE_ARGS.C ]
+ */
+
+/* size_t	ft_tablen(char	**tab) */
+/* char	**ft_split_numbers(int ac, char **av); */
+void	ft_parser(t_data *data, int ac, char **av);
 
 /*
  ** [ LISTUTILS_3.C ]
@@ -29,6 +67,7 @@ typedef struct s_lst
 
 t_lst	*ft_listmin(t_lst *lst);
 t_lst	*ft_listmax(t_lst *lst);
+int     ft_listissort(t_lst *lst);
 
 /*
  ** [ LISTUTILS_2.C ]
@@ -49,6 +88,19 @@ void	ft_listdelone(t_lst *lst, void (*del)(void *));
 t_lst	*ft_listlast(t_lst *lst);
 t_lst	*ft_listnew(int content);
 int		ft_listsize(t_lst *lst);
+
+/*
+ ** [ GET_NEXT_LINE/UTILS.C]
+ */
+
+size_t	ft_strlen(const char *s);
+int		ft_is_nl(char *str);
+size_t		ft_len_newline(char *str);
+char	*ft_substr_gnl(char *s, unsigned int start, size_t len);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+char	*ft_get_line(char *temp);
+char	*ft_update_temp(char *temp);
+char	*get_next_line(int fd);
 
 
 void    ft_sa(t_lst *stack_a, t_lst *stack_b);

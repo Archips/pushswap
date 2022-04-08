@@ -36,7 +36,6 @@ t_lst	*ft_listnew(int content)
 	first = malloc(sizeof(t_lst));
 	if (!first)
 		return (NULL);
-
 	first->content = content;
 	first->next = NULL;
 	return (first);
