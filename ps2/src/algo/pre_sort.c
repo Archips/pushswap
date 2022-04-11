@@ -2,8 +2,6 @@
 
 /*
  ** Update tab between each pre_sort.
- **
- ** TODO PROTECT MALLOC
  */
 
 static void	ft_update_tab(t_data *data)
@@ -14,6 +12,16 @@ static void	ft_update_tab(t_data *data)
 	free(data->tab);
 	temp = data->stack_a;
 	data->tab = malloc(sizeof(int) * data->tab_size);
+	if (!data->tab)
+	{
+		if (data->stack_a)
+			ft_listclear(&data->stack_a, free);
+		if (data->stack_b)
+			ft_listclear(&data->stack_b, free);
+		if (data->oplist)
+			ft_char_listclear(&data->oplist, free);
+		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	while (temp)
 	{
@@ -80,9 +88,9 @@ void	ft_pre_sort(t_data *data)
 	while (i < (int) data->tab_size)
 	{
 		if (data->stack_a->content < median)
-			ft_push(&data->stack_b, &data->stack_a, "pb", data->oplist);
+			ft_push(&data->stack_b, &data->stack_a, "pb", data);
 		else
-			ft_rotate(&data->stack_a, "ra", data->oplist);
+			ft_rotate(&data->stack_a, "ra", data);
 		i ++;
 	}
 	data->tab_size = (size_t)ft_listsize(data->stack_a);

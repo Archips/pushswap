@@ -15,6 +15,7 @@
 # TODO set name
 PREFIX		= push_swap
 NAME		= $(PREFIX)
+NAME_BONUS	= checker
 
 # TODO set libriaires
 LIB_DIR		= lib
@@ -38,7 +39,7 @@ SRCS		= main.c				\
 			  algo/pre_sort.c		\
 			  algo/senpai.c			\
 			  algo/costs.c			\
-			  algo/id.c				\
+			  algo/id.c			\
 			  algo/moves.c			\
 			  algo/sort.c			\
 			  algo/smallsort.c		\
@@ -49,8 +50,29 @@ SRCS		= main.c				\
 			  char_listutils.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
+SRC_DIR_BONUS		= src
+SRCS_BONUS		= checker/main_bonus.c		\
+			checker/checker_bonus.c		\
+			checker/get_next_line_bonus.c		\
+			checker/get_next_line_utils_bonus.c	\
+			checker/push_bonus.c			\
+			checker/reverse_bonus.c		\
+			checker/rotate_bonus.c		\
+			checker/swap_bonus.c			\
+			parse_args.c			\
+			check_args.c			\
+			security.c			\
+			listutils_1.c			\
+			listutils_2.c			\
+			listutils_3.c			
+
+SRCS_BONUS		:= $(SRCS_BONUS:%=$(SRC_DIR_BONUS)/%)
+
 OBJ_DIR 	= obj
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+OBJ_DIR_BONUS 	= obj_bonus
+OBJS_BONUS	= $(SRCS_BONUS:$(SRC_DIR_BONUS)/%.c=$(OBJ_DIR_BONUS)/%.o)
 
 # ========== [ Compiler flags ]
 
@@ -91,11 +113,21 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 	@$(ECHO)"$(G)created $(END)$(NAME)\n"
 
+bonus : $(OBJS_BONUS)
+	@for f in $(LIB); do $(MAKE) $$f --no-print-directory; done
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS_BONUS) $(LDLIBS) -o $(NAME_BONUS)
+	@$(ECHO)"$(G)created $(END)$(NAME_BONUS)\n"
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@[ ! -d $(@D) ] && mkdir -p  $(@D) || true
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 	@$(ECHO)"$(G)created $(END)$@"
 
+$(OBJ_DIR_BONUS)/%.o: $(SRC_DIR_BONUS)/%.c
+	@[ ! -d $(@D) ] && mkdir -p  $(@D) || true
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	@$(ECHO)"$(G)created $(END)$@"
+	
 clean:
 	@for f in $(LIB); do $(MAKE) $$f clean --no-print-directory; done
 	@[ -d $(OBJ_DIR) ] \

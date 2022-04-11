@@ -59,21 +59,23 @@ void	ft_sort(t_data *data)
 	while (ft_set_ids(data->stack_a) > 2)
 		ft_pre_sort(data);
 	if (ft_check_order(data->stack_a) == 0
-		&& ft_check_order(data->stack_b) == 1)
-		ft_ss(data->stack_a, data->stack_b, data->oplist);
+			&& ft_check_order(data->stack_b) == 1)
+		ft_ss(data);
 	else if (ft_check_order(data->stack_a) == 0)
-		ft_swap(data->stack_a, "sa", data->oplist);
+		ft_swap(data->stack_a, "sa", data);
 	else if (ft_check_order(data->stack_b) == 1)
-		ft_swap(data->stack_b, "sb", data->oplist);
+		ft_swap(data->stack_b, "sb", data);
 	while (ft_set_ids(data->stack_b))
 	{
 		ft_update_nodes(data);
 		ft_move_cheap(data);
 	}
+	ft_set_ids(data->stack_a);
 	if (ft_listmin(data->stack_a)->id > ft_set_ids(data->stack_a) / 2)
 		while (data->stack_a->content != ft_listmin(data->stack_a)->content)
-			ft_reverse_rotate(&data->stack_a, "rra", data->oplist);
+			ft_reverse_rotate(&data->stack_a, "rra", data);
 	else if (ft_listmin(data->stack_a)->id <= ft_set_ids(data->stack_a) / 2)
 		while (data->stack_a->content != ft_listmin(data->stack_a)->content)
-			ft_rotate(&data->stack_a, "ra", data->oplist);
+			ft_rotate(&data->stack_a, "ra", data);
 }
+
