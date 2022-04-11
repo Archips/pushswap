@@ -6,17 +6,17 @@
 /*   By: athirion <athirion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 10:33:50 by athirion          #+#    #+#             */
-/*   Updated: 2022/04/08 14:46:09 by athirion         ###   ########.fr       */
+/*   Updated: 2022/04/11 10:17:56 by athirion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#include "libft.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include "libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_lst
 {
@@ -68,7 +68,7 @@ void	ft_parser(t_data *data, int ac, char **av);
 
 t_lst	*ft_listmin(t_lst *lst);
 t_lst	*ft_listmax(t_lst *lst);
-int     ft_listissort(t_lst *lst);
+int		ft_listissort(t_lst *lst);
 
 /*
  ** [ LISTUTILS_2.C ]
@@ -96,7 +96,7 @@ int		ft_listsize(t_lst *lst);
 
 size_t	ft_strlen(const char *s);
 int		ft_is_nl(char *str);
-size_t		ft_len_newline(char *str);
+size_t	ft_len_newline(char *str);
 char	*ft_substr_gnl(char *s, unsigned int start, size_t len);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*ft_get_line(char *temp);
@@ -113,31 +113,31 @@ void	ft_read_operations(t_data *data);
  ** [ SWAP.C ]
  */
 
-void    ft_sa(t_lst **stack_a);
-void    ft_sb(t_lst **stack_b);
-void    ft_ss(t_lst **stack_a, t_lst **stack_b);
+void	ft_sa(t_lst **stack_a);
+void	ft_sb(t_lst **stack_b);
+void	ft_ss(t_lst **stack_a, t_lst **stack_b);
 
 /*
  ** [ PUSH.C ]
  */
 
-void    ft_pa(t_lst **stack_a, t_lst **stack_b);
-void    ft_pb(t_lst **stack_a, t_lst **stack_b);
+void	ft_pa(t_lst **stack_a, t_lst **stack_b);
+void	ft_pb(t_lst **stack_a, t_lst **stack_b);
 
 /*
  ** [ ROTATE.C ]
  */
 
-void    ft_ra(t_lst **stack_a);
-void    ft_rb(t_lst **stack_b);
-void    ft_rr(t_lst **stack_a, t_lst **stack_b);
+void	ft_ra(t_lst **stack_a);
+void	ft_rb(t_lst **stack_b);
+void	ft_rr(t_lst **stack_a, t_lst **stack_b);
 
 /*
  ** [ REVERSE.C ]
  */
 
-void    ft_rra(t_lst **stack_a);
-void    ft_rrb(t_lst **stack_b);
-void    ft_rrr(t_lst **stack_a, t_lst **stack_b);
+void	ft_rra(t_lst **stack_a);
+void	ft_rrb(t_lst **stack_b);
+void	ft_rrr(t_lst **stack_a, t_lst **stack_b);
 
 #endif 

@@ -51,7 +51,8 @@ void	ft_push(t_lst **stack_bot, t_lst **stack_top, char *p, t_data *data)
 /*
  ** Add each operation to a list
  **
- ** TODO demander à @mdavid si les if check des protection malloc sont pertinentes.
+ ** TODO demander à @mdavid si les if check des protection 
+ ** malloc sont pertinentes.
  */
 
 void	ft_add_op(char *str, t_data *data)
@@ -93,16 +94,16 @@ void	ft_print_op(t_data *data)
 	while (temp && temp->next)
 	{
 		if (ft_strncmp(temp->operation, "rra", 3) == 0
-				&& ft_strncmp(temp->next->operation, "rrb", 3) == 0)
+			&& ft_strncmp(temp->next->operation, "rrb", 3) == 0)
 			temp = (ft_printf("rrr\n"), temp->next->next);
 		else if (ft_strncmp(temp->operation, "rrb", 3) == 0
-				&& ft_strncmp(temp->next->operation, "rra", 3) == 0)
+			&& ft_strncmp(temp->next->operation, "rra", 3) == 0)
 			temp = (ft_printf("rrr\n"), temp->next->next);
 		else if (ft_strncmp(temp->operation, "ra", 2) == 0
-				&& ft_strncmp(temp->next->operation, "rb", 2) == 0)
+			&& ft_strncmp(temp->next->operation, "rb", 2) == 0)
 			temp = (ft_printf("rr\n"), temp->next->next);
 		else if (ft_strncmp(temp->operation, "rb", 2) == 0
-				&& ft_strncmp(temp->next->operation, "ra", 2) == 0)
+			&& ft_strncmp(temp->next->operation, "ra", 2) == 0)
 			temp = (ft_printf("rr\n"), temp->next->next);
 		else
 			temp = (ft_printf("%s\n", temp->operation), temp->next);

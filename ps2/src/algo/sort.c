@@ -59,7 +59,7 @@ void	ft_sort(t_data *data)
 	while (ft_set_ids(data->stack_a) > 2)
 		ft_pre_sort(data);
 	if (ft_check_order(data->stack_a) == 0
-			&& ft_check_order(data->stack_b) == 1)
+		&& ft_check_order(data->stack_b) == 1)
 		ft_ss(data);
 	else if (ft_check_order(data->stack_a) == 0)
 		ft_swap(data->stack_a, "sa", data);
@@ -78,4 +78,3 @@ void	ft_sort(t_data *data)
 		while (data->stack_a->content != ft_listmin(data->stack_a)->content)
 			ft_rotate(&data->stack_a, "ra", data);
 }
-

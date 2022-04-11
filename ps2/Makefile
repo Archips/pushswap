@@ -6,7 +6,7 @@
 #    By: cvidon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 15:04:55 by cvidon            #+#    #+#              #
-#    Updated: 2022/04/06 16:37:03 by cvidon           ###   ########.fr        #
+#    Updated: 2022/04/11 10:13:20 by athirion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,12 @@ SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 SRC_DIR_BONUS		= src
 SRCS_BONUS		= checker/main_bonus.c		\
 			checker/checker_bonus.c		\
-			checker/get_next_line_bonus.c		\
-			checker/get_next_line_utils_bonus.c	\
 			checker/push_bonus.c			\
 			checker/reverse_bonus.c		\
 			checker/rotate_bonus.c		\
 			checker/swap_bonus.c			\
 			parse_args.c			\
+			char_listutils.c		\
 			check_args.c			\
 			security.c			\
 			listutils_1.c			\

@@ -25,18 +25,18 @@ static void	ft_get_operations(t_data *data, char *op)
 	else if (ft_strncmp(op, "rrr\n", 4) == 0)
 		ft_rrr(&data->stack_a, &data->stack_b);
 	else
-		return(ft_putstr_fd("Error\n", 2), exit(EXIT_FAILURE)); //TO DO
+		return (ft_putstr_fd("Error\n", 2), exit(EXIT_FAILURE)); //TO DO
 }
 
 void	ft_read_operations(t_data *data)
 {
-	char *op;
+	char	*op;
 
 	while (1)
 	{
 		op = get_next_line(0);
 		if (!op)
-			break;
+			break ;
 		ft_get_operations(data, op);
 		free(op);
 	}

@@ -6,7 +6,7 @@
 /*   By: cvidon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:48:18 by cvidon            #+#    #+#             */
-/*   Updated: 2021/11/24 14:48:18 by cvidon           ###   ########.fr       */
+/*   Updated: 2022/04/11 10:24:30 by athirion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	tests_run = 0;
 #define _verify(test) do { int ret=test(); tests_run++; if (ret) return (ret); } while (0)
 
 /* Time tracking */
-#define TIC(T) clock_t T = clock()
-#define TOC(T) printf("%s: %.4fs\n", (#T), (double)(clock() - (T)) / CLOCKS_PER_SEC)
+/* #define TIC(T) clock_t T = clock() */
+/* #define TOC(T) printf("%s: %.4fs\n", (#T), (double)(clock() - (T)) / CLOCKS_PER_SEC) */
 
 /* /1* Logs *1/ */
 /* FILE *f; */

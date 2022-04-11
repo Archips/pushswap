@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: athirion <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/11 10:18:21 by athirion          #+#    #+#             */
+/*   Updated: 2022/04/11 10:19:08 by athirion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -80,10 +92,10 @@ void	ft_error(char **strtab, int *numtab);
  ** [ CHAR_LISTUTILS.C ]
  */
 
- void	ft_char_listdelone(t_op *oplist, void (*del)(void *));
- void	ft_char_listdelfirst(t_op **oplist, void (*del)(void *));
- t_op	*ft_char_listnew(char *operation, t_data *data);
- void	ft_char_listclear(t_op **oplist, void (*del)(void *));
+void	ft_char_listdelone(t_op *oplist, void (*del)(void *));
+void	ft_char_listdelfirst(t_op **oplist, void (*del)(void *));
+t_op	*ft_char_listnew(char *operation, t_data *data);
+void	ft_char_listclear(t_op **oplist, void (*del)(void *));
 
 /*
  ** [ LISTUTILS_3.C ]
@@ -162,7 +174,7 @@ int		ft_set_ids(t_lst *stack);
 /* static void    ft_smallmove(t_data *data) */
 /* static void    ft_smallsort_2(t_data *data) */
 /* static void  ft_smallsort_1(t_data *data) */
-void    ft_smallsort(t_data *data);
+void	ft_smallsort(t_data *data);
 
 /*
  ** [ SORT.C ]
