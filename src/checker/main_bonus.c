@@ -6,7 +6,7 @@
 /*   By: athirion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 14:21:41 by athirion          #+#    #+#             */
-/*   Updated: 2022/04/14 14:21:43 by athirion         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:57:08 by athirion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int	main(int ac, char **av)
 		if (!data.tab)
 			return (ft_putstr_fd("Error\n", 2), 1);
 		ft_init_stacks(&data);
-		if (!ft_listissort(data.stack_a))
-			ft_read_operations(&data);
+		ft_read_operations(&data);
 		ft_listclear(&data.stack_a, free);
 		ft_listclear(&data.stack_b, free);
 		free(data.tab);
