@@ -1,4 +1,8 @@
-# Push_swap - Sorting Algorithm Project
+# Push_swap
+
+## Score
+
+-  125%
 
 ## Project Highlights
 
